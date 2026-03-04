@@ -1,0 +1,11 @@
+<h1>Foro de Dudas</h1>
+<a href="{% url 'crear_duda' %}">Preguntar algo nuevo</a>
+<hr>
+{% for duda in dudas %}
+    <div>
+        <h3><a href="{% url 'detalle_duda' duda.id %}">{{ duda.titulo }}</a></h3>
+        <p>{{ duda.contenido|truncatewords:20 }}</p>
+        <a href="{% url 'eliminar_duda' duda.id %}" style="color:red;">Eliminar</a>
+    </div>
+    <hr>
+{% endfor %}
