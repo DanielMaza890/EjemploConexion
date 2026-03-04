@@ -14,8 +14,12 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.contrib import admin
-from django.urls import path
+from django.urls import path, include
+from django.views.generic import RedirectView  # Esta línea es necesaria
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('foro/', include('foro.urls')),
+    # Aquí estaba el error, ya está corregido:
+    path('', RedirectView.as_view(url='foro/', permanent=True)),
 ]
